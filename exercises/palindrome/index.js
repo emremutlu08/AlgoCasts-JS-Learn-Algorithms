@@ -7,6 +7,14 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+function palindrome(str) {
+  return str
+    .split("")
+    .every((char, index, arr) => char === arr[arr.length - 1 - index]);
+}
+
+// function palindrome(str) {
+//     return str === str.split("").reverse().join("");
+//   }
 
 module.exports = palindrome;
