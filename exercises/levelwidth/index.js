@@ -11,6 +11,25 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {}
+function levelWidth(root) {
+  // Count of the stopper is determine the counter length
+  const STOPPER = "STOPPER";
+  const arr = [root, STOPPER];
+  const counters = [0];
+
+  while (arr.length > 1) {
+    const node = arr.shift();
+
+    if (node === STOPPER) {
+      counters.push(0);
+      arr.push(STOPPER);
+    } else {
+      arr.push(...node.children);
+      counters[counters.length - 1]++;
+    }
+  }
+
+  return counters;
+}
 
 module.exports = levelWidth;
